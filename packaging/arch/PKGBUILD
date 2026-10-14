@@ -1,0 +1,23 @@
+pkgname=shimeji-desktop-buddy
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Animated desktop sprite companion'
+arch=('any')
+depends=('python' 'pyside6' 'libx11')
+license=('custom')
+
+package() {
+	local project_dir="$startdir/../.."
+
+	install -Dm755 "$startdir/shimeji" "$pkgdir/usr/bin/shimeji"
+	install -Dm644 "$project_dir/shimeji.py" "$pkgdir/usr/share/shimeji/shimeji.py"
+	install -Dm644 "$project_dir/words.txt" "$pkgdir/usr/share/shimeji/words.txt"
+	install -d "$pkgdir/usr/share/shimeji"
+	cp "$project_dir"/*.png "$pkgdir/usr/share/shimeji/"
+	cp -r "$project_dir/assets" "$pkgdir/usr/share/shimeji/"
+	install -Dm644 "$startdir/shimeji.desktop" "$pkgdir/usr/share/applications/shimeji.desktop"
+	install -Dm644 "$project_dir/stay1.png" \
+		"$pkgdir/usr/share/icons/hicolor/256x256/apps/shimeji.png"
+	install -Dm644 "$project_dir/assets/fonts/OFL.txt" \
+		"$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
+}

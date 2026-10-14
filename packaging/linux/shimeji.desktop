@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Shimeji
+Comment=Desktop sprite companion
+Exec=Shimeji
+Icon=shimeji
+Terminal=false
+Categories=Utility;Game;
+StartupNotify=false
